@@ -334,7 +334,6 @@ function bubble() {
   c.height = height;
   for (i = 0; i < Bubbles.length; i++) {
     var b = Bubbles[i];
-    console.log(i, b);
     ctx.beginPath();
     ctx.arc(b.x, b.y, b.r, 0, 2 * Math.PI);
     
@@ -370,7 +369,26 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas, false);
 
-
+function httpGet(theUrl)
+{
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            return xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", theUrl, false );
+    xmlhttp.send();    
+}
 
 
     </script>
